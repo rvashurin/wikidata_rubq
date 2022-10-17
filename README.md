@@ -6,7 +6,6 @@ Huggingface Dataset wrapper for Wikidata-RuBQ 2.0 dataset
 
 ```bash
 git clone git@github.com:s-nlp/wikidata-rubq-hf.git wikidata_rubq
-git clone git@github.com:skoltech-nlp/wikidata-simplequestions-hf.git wikidata_simplequestions
 ```
 
 ```python3
