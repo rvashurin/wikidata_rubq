@@ -15,8 +15,8 @@ _LANGS = ["ru","en"]
 
 
 _URLS = {
-    "test": "rubq/RuBQ_2.0_test.json",  
-    "dev": "rubq/RuBQ_2.0_dev.json",
+    "test": "https://raw.githubusercontent.com/vladislavneon/RuBQ/master/RuBQ_2.0/RuBQ_2.0_test.json",  
+    "dev": "https://raw.githubusercontent.com/vladislavneon/RuBQ/master/RuBQ_2.0/RuBQ_2.0_dev.json",
 }
 
 
