@@ -54,7 +54,7 @@ class WikidataRuBQ(datasets.GeneratorBasedBuilder):
     def _info(self):
         features = datasets.Features(
             {
-                "object": datasets.Sequence(datasets.Value("string")),
+                "object": datasets.Value("string"),
                 "question": datasets.Value("string")
             }
         )
@@ -78,6 +78,12 @@ class WikidataRuBQ(datasets.GeneratorBasedBuilder):
         downloaded_files = dl_manager.download_and_extract(_URLS)
 
         return [
+            datasets.SplitGenerator(
+                name=datasets.Split.TRAIN,
+                gen_kwargs={
+                    "filepath": downloaded_files["dev"],
+                    "lang": lang,
+                }),
             datasets.SplitGenerator(
                 name=datasets.Split.VALIDATION,
                 gen_kwargs={
@@ -107,7 +113,7 @@ class WikidataRuBQ(datasets.GeneratorBasedBuilder):
                 if len(set(objects)) >= 1:
                     yield (key,
                         {
-                            "object": objects,
+                            "object": objects[0],
                             "question": question,
                         }
                     )
