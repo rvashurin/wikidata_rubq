@@ -2,6 +2,7 @@ import datasets
 import os
 import json
 
+
 _DESCRIPTION = """\
 HuggingFace wrapper for https://github.com/vladislavneon/RuBQ dataset
 """
@@ -106,14 +107,14 @@ class WikidataRuBQ(datasets.GeneratorBasedBuilder):
                 question = i['question_text'] if lang == 'ru' else i['question_eng']
 
                 objects = list(set(
-                    [answer['value'].split('entity/')[1] for answer in i['answers'] if '/Q' in answer['value']]
+                    [answer['label'] for answer in i['answers']]
                 ))
-
+                
                 key = i['uid']
-                if len(set(objects)) >= 1:
+                if i['answer_text'] is not None:
                     yield (key,
                         {
-                            "object": objects[0],
+                            "object": i['answer_text'],
                             "question": question,
                         }
                     )
