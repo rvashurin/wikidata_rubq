@@ -79,6 +79,12 @@ class WikidataRuBQ(datasets.GeneratorBasedBuilder):
 
         return [
             datasets.SplitGenerator(
+                name=datasets.Split.TRAIN,
+                gen_kwargs={
+                    "filepath": downloaded_files["dev"],
+                    "lang": lang,
+                }),
+            datasets.SplitGenerator(
                 name=datasets.Split.VALIDATION,
                 gen_kwargs={
                     "filepath": downloaded_files["dev"],
